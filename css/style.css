@@ -13,4 +13,10 @@
 
 #loading {
     font-family: monospace;
+    max-width: 10rem;
+    word-wrap:break-word;
+}
+
+#number-of-emails {
+    width: 3rem;
 }

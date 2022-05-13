@@ -11,9 +11,12 @@
 </head>
 <body>
     <div id="root">
-        <button @click="buildEmailArray(10)">Genera email</button>
-        <p id="loading" v-if="emailArray.length <= 9">Loading <span v-for="email in emailArray">.</span></p>
-        <ul v-if="emailArray.length > 9">
+        <div class="inputs">
+            <button @click="buildEmailArray(howManyToGenerate)">Genera email</button>
+            <input id="number-of-emails" type="number" v-model="howManyToGenerate">
+        </div>
+        <p id="loading" v-if="emailArray.length < howManyToShow">Loading&nbsp;<span v-for="email in emailArray">.</span></p>
+        <ul v-if="emailArray.length >= howManyToShow">
             <li v-for="email in emailArray">
                 {{email}}
             </li>

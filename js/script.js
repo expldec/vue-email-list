@@ -3,13 +3,15 @@ const app = new Vue(
         el : '#root',
         data: {
             emailArray: [],
+            howManyToGenerate: 10,
+            howManyToShow: 10,
             
         },
         computed: {
         },
         methods: {
             getEmail: function() {
-                let fetchedEmail = 'testd'
+                let fetchedEmail = ''
                 axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
                 .then((response) => {
                     fetchedEmail = response.data.response;
@@ -18,6 +20,7 @@ const app = new Vue(
                 }); 
             },
             buildEmailArray: function(numberOfItems) {
+                this.howManyToShow = this.howManyToGenerate;
                 this.emailArray = [];
                 for (let i = 0; i < numberOfItems; i++) {
                     this.getEmail();
@@ -26,7 +29,7 @@ const app = new Vue(
             
         },
         mounted() {
-            this.buildEmailArray(10)
+            this.buildEmailArray(this.howManyToGenerate)
         },
     }
 )
