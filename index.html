@@ -12,6 +12,7 @@
 <body>
     <div id="root">
         <button @click="buildEmailArray(10)">Genera email</button>
+        <p id="loading" v-if="emailArray.length <= 9">Loading <span v-for="email in emailArray">.</span></p>
         <ul v-if="emailArray.length > 9">
             <li v-for="email in emailArray">
                 {{email}}
